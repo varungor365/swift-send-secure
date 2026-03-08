@@ -60,7 +60,7 @@ export const slides: SlideData[] = [
   {
     component: MethodologySlide,
     title: "Methodology & Protocol Design",
-    speaker: "Aditya",
+    speaker: "Aaditya",
     notes: `"Our four-phase protocol design is informed by Dukiya et al.'s (2024) framework for equal peer participation and Salihu et al.'s (2019) threat model analysis. Phase 1 — Discovery: mDNS (RFC 6762) enables zero-configuration peer discovery without external DNS infrastructure. Phase 2 — Signaling: WebSocket connections (RFC 6455) exchange SDP offers, ICE candidates, and ephemeral ECDH public keys. As Fette & Melnikov specify in RFC 6455, this provides a full-duplex communication channel essential for real-time signaling. Phase 3 — Encryption: AES-256-GCM via Web Crypto API with ECDH key agreement on the P-256 curve, providing perfect forward secrecy. Phase 4 — Transfer: WebRTC DataChannels transmit data in 64KB chunks, with each chunk individually authenticated by GCM tags. As RFC 8827 mandates, the transport layer is additionally secured by DTLS, creating our defense-in-depth approach."`,
   },
   {
