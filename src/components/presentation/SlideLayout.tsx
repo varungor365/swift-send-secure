@@ -29,6 +29,13 @@ const SlideLayout: React.FC<SlideLayoutProps> = ({ children, className = "" }) =
           background: "radial-gradient(circle at top right, hsl(170 85% 50%), transparent 70%)",
         }}
       />
+      {/* DIT University Logo */}
+      <img
+        src="/dit-logo.webp"
+        alt="DIT University"
+        className="absolute top-6 right-8 z-20 h-16 w-auto object-contain"
+        style={{ filter: "brightness(1.1)" }}
+      />
       <div className="relative z-10 w-full h-full p-16">
         {children}
       </div>
