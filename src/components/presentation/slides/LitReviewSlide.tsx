@@ -1,129 +1,146 @@
 import SlideLayout from "../SlideLayout";
 import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { Check, X, BookOpen, AlertCircle } from "lucide-react";
 
-const features = [
-  "Zero Config",
-  "Cross-Platform",
-  "E2E Encrypted",
-  "No Ads / Tracking",
-  "Offline Mode",
-  "Open Standards",
-];
-
-const tools = [
-  { name: "FTP/SFTP", year: "1971/1999", values: [false, true, false, true, true, true], ref: "RFC 959, RFC 4253" },
-  { name: "Apple AirDrop", year: "2011", values: [true, false, true, true, true, false], ref: "AWDL Protocol" },
-  { name: "SHAREit", year: "2013", values: [true, true, false, false, true, false], ref: "Proprietary" },
-  { name: "Snapdrop", year: "2015", values: [true, true, false, true, false, true], ref: "WebRTC-based" },
-  { name: "Secure-Drop", year: "2025", values: [true, true, true, true, true, true], ref: "WebRTC + Web Crypto" },
+const papers = [
+  {
+    id: 1,
+    authors: "Rahalkar & Virgaonkar",
+    year: "2024",
+    title: "Secure Device-to-Device File Transfer Protocol",
+    source: "arXiv:2411.13827",
+    finding: "Identifies encryption overhead & cloud storage quota limitations in existing WebRTC-based protocols",
+    gap: "Does not address offline discovery or cross-platform browser-only access",
+    color: "hsl(200 80% 55%)",
+  },
+  {
+    id: 2,
+    authors: "Dukiya et al.",
+    year: "2024",
+    title: "SecureLink P2P Using WebRTC",
+    source: "IJRAR, Vol. 11",
+    finding: "Validates equal-peer participation model with eavesdropping countermeasures",
+    gap: "Lacks offline-first capability and zero-configuration device discovery",
+    color: "hsl(170 85% 50%)",
+  },
+  {
+    id: 3,
+    authors: "Salihu et al.",
+    year: "2019",
+    title: "Design & Implementation of P2P Communication Using WebRTC",
+    source: "Science Journal",
+    finding: "Details WebRTC threat models; justifies cryptographic libraries for confidentiality & integrity",
+    gap: "No cross-platform browser-only solution; relies on server-mediated signaling",
+    color: "hsl(40 90% 55%)",
+  },
+  {
+    id: 4,
+    authors: "Werner, M.",
+    year: "—",
+    title: "P2P Networking using Open Web Technologies",
+    source: "HAW Hamburg",
+    finding: "Proves browser-native APIs can build distributed networks without third-party installations",
+    gap: "Does not implement end-to-end file encryption or authenticated transfers",
+    color: "hsl(145 70% 50%)",
+  },
+  {
+    id: 5,
+    authors: "Stute et al.",
+    year: "2019",
+    title: "MitM, DoS & Tracking Attacks on AWDL (AirDrop)",
+    source: "USENIX Security",
+    finding: "Exposes critical vulnerabilities in Apple's proprietary AWDL protocol",
+    gap: "Reinforces why closed, proprietary protocols are inadequate for secure P2P",
+    color: "hsl(280 70% 60%)",
+  },
 ];
 
 const LitReviewSlide = () => (
   <SlideLayout>
     <div className="flex flex-col h-full">
-      <motion.h2
-        className="text-5xl font-bold mb-2"
+      <motion.div
+        className="flex items-center gap-4 mb-2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Literature <span style={{ color: "hsl(170 85% 50%)" }}>Review</span>
-      </motion.h2>
-      <p className="text-lg mb-6" style={{ color: "hsl(215 15% 60%)" }}>
-        Comparative Analysis of Existing File Transfer Solutions
+        <BookOpen size={36} style={{ color: "hsl(170 85% 50%)" }} />
+        <h2 className="text-5xl font-bold">
+          Literature <span style={{ color: "hsl(170 85% 50%)" }}>Review</span>
+        </h2>
+      </motion.div>
+      <p className="text-base mb-5" style={{ color: "hsl(215 15% 55%)" }}>
+        Systematic analysis of peer-reviewed research identifying gaps in existing P2P file transfer solutions
       </p>
 
-      <div className="flex items-start">
-        <table className="w-full" style={{ borderCollapse: "separate", borderSpacing: "0 5px" }}>
-          <thead>
-            <tr>
-              <th className="text-left text-lg p-3 font-semibold" style={{ color: "hsl(215 15% 60%)" }}>Solution</th>
-              <th className="text-center text-sm p-3 font-semibold" style={{ color: "hsl(215 15% 50%)" }}>Year</th>
-              {features.map((f) => (
-                <th key={f} className="text-center text-base p-3 font-semibold" style={{ color: "hsl(215 15% 60%)" }}>{f}</th>
-              ))}
-              <th className="text-center text-sm p-3 font-semibold" style={{ color: "hsl(215 15% 50%)" }}>Protocol</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tools.map((tool, ti) => {
-              const isSecureDrop = tool.name === "Secure-Drop";
-              return (
-                <motion.tr
-                  key={tool.name}
-                  className="rounded-xl"
-                  style={{
-                    background: isSecureDrop ? "hsl(170 85% 50% / 0.1)" : "hsl(220 20% 12% / 0.8)",
-                    border: isSecureDrop ? "2px solid hsl(170 85% 50% / 0.4)" : undefined,
-                  }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 + ti * 0.1 }}
-                >
-                  <td className="text-lg font-bold p-3 rounded-l-xl" style={{ color: isSecureDrop ? "hsl(170 85% 50%)" : "hsl(210 20% 92%)" }}>
-                    {tool.name}
-                  </td>
-                  <td className="text-center text-sm p-3" style={{ color: "hsl(215 15% 50%)" }}>
-                    {tool.year}
-                  </td>
-                  {tool.values.map((v, i) => (
-                    <td key={i} className="text-center p-3">
-                      {v ? (
-                        <Check size={22} className="inline-block" style={{ color: "hsl(145 70% 50%)" }} />
-                      ) : (
-                        <X size={22} className="inline-block" style={{ color: "hsl(0 75% 55%)" }} />
-                      )}
-                    </td>
-                  ))}
-                  <td className="text-center text-xs p-3 rounded-r-xl" style={{ color: isSecureDrop ? "hsl(170 85% 50% / 0.7)" : "hsl(215 15% 50%)" }}>
-                    {tool.ref}
-                  </td>
-                </motion.tr>
-              );
-            })}
-          </tbody>
-        </table>
+      {/* Papers grid */}
+      <div className="flex-1 flex flex-col gap-3">
+        {papers.map((p, i) => (
+          <motion.div
+            key={p.id}
+            className="flex gap-5 p-4 rounded-xl"
+            style={{
+              background: "hsl(220 20% 12% / 0.85)",
+              borderLeft: `4px solid ${p.color}`,
+              border: `1px solid ${p.color}20`,
+              borderLeftWidth: "4px",
+              borderLeftColor: p.color,
+            }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.15 + i * 0.1, duration: 0.4 }}
+          >
+            {/* Citation number */}
+            <div className="flex flex-col items-center justify-center flex-shrink-0 w-10">
+              <span className="text-2xl font-black" style={{ color: `${p.color}88` }}>
+                [{p.id}]
+              </span>
+            </div>
+
+            {/* Paper info */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-base font-bold" style={{ color: p.color }}>
+                  {p.authors} ({p.year})
+                </span>
+                <span className="text-xs px-2 py-0.5 rounded" style={{ background: `${p.color}15`, color: p.color, border: `1px solid ${p.color}30` }}>
+                  {p.source}
+                </span>
+              </div>
+              <p className="text-sm font-semibold mb-1.5" style={{ color: "hsl(210 20% 88%)" }}>
+                "{p.title}"
+              </p>
+              <div className="flex gap-6">
+                <div className="flex items-start gap-2 flex-1">
+                  <Check size={14} className="mt-0.5 flex-shrink-0" style={{ color: "hsl(145 70% 50%)" }} />
+                  <p className="text-xs" style={{ color: "hsl(215 15% 60%)" }}>{p.finding}</p>
+                </div>
+                <div className="flex items-start gap-2 flex-1">
+                  <AlertCircle size={14} className="mt-0.5 flex-shrink-0" style={{ color: "hsl(40 90% 55%)" }} />
+                  <p className="text-xs" style={{ color: "hsl(215 15% 55%)" }}>{p.gap}</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
 
-      {/* Key research citations */}
-      <motion.div
-        className="grid grid-cols-2 gap-4 mt-5"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.7 }}
-      >
-        <div className="p-4 rounded-xl" style={{ background: "hsl(220 20% 12% / 0.8)", border: "1px solid hsl(200 80% 55% / 0.2)" }}>
-          <p className="text-sm font-bold mb-1" style={{ color: "hsl(200 80% 55%)" }}>Rahalkar & Virgaonkar (2024)</p>
-          <p className="text-xs" style={{ color: "hsl(215 15% 55%)" }}>
-            "Secure Device-to-Device File Transfer Protocol" — addresses encryption overhead & cloud storage limitations using WebRTC stack
-          </p>
-          <span className="text-xs italic" style={{ color: "hsl(215 15% 45%)" }}>arXiv:2411.13827</span>
-        </div>
-        <div className="p-4 rounded-xl" style={{ background: "hsl(220 20% 12% / 0.8)", border: "1px solid hsl(170 85% 50% / 0.2)" }}>
-          <p className="text-sm font-bold mb-1" style={{ color: "hsl(170 85% 50%)" }}>Dukiya et al. (2024)</p>
-          <p className="text-xs" style={{ color: "hsl(215 15% 55%)" }}>
-            "SecureLink P2P Using WebRTC" — equal peer participation model with integrated eavesdropping countermeasures
-          </p>
-          <span className="text-xs italic" style={{ color: "hsl(215 15% 45%)" }}>IJRAR, Vol. 11</span>
-        </div>
-      </motion.div>
-
-      {/* Research gap */}
+      {/* Research gap synthesis */}
       <motion.div
         className="p-4 rounded-xl mt-4"
         style={{
-          background: "linear-gradient(135deg, hsl(170 85% 50% / 0.08), hsl(200 80% 55% / 0.08))",
-          border: "1px solid hsl(170 85% 50% / 0.2)",
+          background: "linear-gradient(135deg, hsl(170 85% 50% / 0.1), hsl(145 70% 50% / 0.08))",
+          border: "1px solid hsl(170 85% 50% / 0.25)",
         }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9 }}
       >
-        <p className="text-sm" style={{ color: "hsl(215 15% 60%)" }}>
-          <span className="font-bold" style={{ color: "hsl(170 85% 50%)" }}>Research Gap: </span>
-          Rahalkar (2024) identifies WebRTC encryption overhead as an open problem. Dukiya (2024) validates P2P WebRTC but lacks offline capability.
-          Salihu et al. (2019) detail WebRTC threat models but don't address cross-platform browser-only access. 
-          <span className="font-semibold" style={{ color: "hsl(170 85% 50%)" }}> Secure-Drop unifies all dimensions.</span>
+        <p className="text-sm leading-relaxed" style={{ color: "hsl(215 15% 65%)" }}>
+          <span className="font-bold text-base" style={{ color: "hsl(170 85% 50%)" }}>⚡ Research Gap Synthesis: </span>
+          No existing work simultaneously achieves <span style={{ color: "hsl(200 80% 60%)" }}>zero-configuration discovery</span>, 
+          <span style={{ color: "hsl(170 85% 55%)" }}> cross-platform browser-only E2E encryption</span>, and 
+          <span style={{ color: "hsl(145 70% 55%)" }}> offline-first operation</span> on open web standards.
+          Secure-Drop is designed to address this unified gap, validated by RFC 8827 (WebRTC Security) and RFC 6455 (WebSocket).
         </p>
       </motion.div>
     </div>
