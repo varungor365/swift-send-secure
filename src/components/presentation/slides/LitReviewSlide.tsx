@@ -29,20 +29,20 @@ const LitReviewSlide = () => (
       >
         Literature <span style={{ color: "hsl(170 85% 50%)" }}>Review</span>
       </motion.h2>
-      <p className="text-lg mb-8" style={{ color: "hsl(215 15% 60%)" }}>
+      <p className="text-lg mb-6" style={{ color: "hsl(215 15% 60%)" }}>
         Comparative Analysis of Existing File Transfer Solutions
       </p>
 
-      <div className="flex-1 flex items-start">
-        <table className="w-full" style={{ borderCollapse: "separate", borderSpacing: "0 6px" }}>
+      <div className="flex items-start">
+        <table className="w-full" style={{ borderCollapse: "separate", borderSpacing: "0 5px" }}>
           <thead>
             <tr>
-              <th className="text-left text-lg p-4 font-semibold" style={{ color: "hsl(215 15% 60%)" }}>Solution</th>
-              <th className="text-center text-sm p-4 font-semibold" style={{ color: "hsl(215 15% 50%)" }}>Year</th>
+              <th className="text-left text-lg p-3 font-semibold" style={{ color: "hsl(215 15% 60%)" }}>Solution</th>
+              <th className="text-center text-sm p-3 font-semibold" style={{ color: "hsl(215 15% 50%)" }}>Year</th>
               {features.map((f) => (
-                <th key={f} className="text-center text-base p-4 font-semibold" style={{ color: "hsl(215 15% 60%)" }}>{f}</th>
+                <th key={f} className="text-center text-base p-3 font-semibold" style={{ color: "hsl(215 15% 60%)" }}>{f}</th>
               ))}
-              <th className="text-center text-sm p-4 font-semibold" style={{ color: "hsl(215 15% 50%)" }}>Protocol Basis</th>
+              <th className="text-center text-sm p-3 font-semibold" style={{ color: "hsl(215 15% 50%)" }}>Protocol</th>
             </tr>
           </thead>
           <tbody>
@@ -60,22 +60,22 @@ const LitReviewSlide = () => (
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 + ti * 0.1 }}
                 >
-                  <td className="text-lg font-bold p-4 rounded-l-xl" style={{ color: isSecureDrop ? "hsl(170 85% 50%)" : "hsl(210 20% 92%)" }}>
+                  <td className="text-lg font-bold p-3 rounded-l-xl" style={{ color: isSecureDrop ? "hsl(170 85% 50%)" : "hsl(210 20% 92%)" }}>
                     {tool.name}
                   </td>
-                  <td className="text-center text-sm p-4" style={{ color: "hsl(215 15% 50%)" }}>
+                  <td className="text-center text-sm p-3" style={{ color: "hsl(215 15% 50%)" }}>
                     {tool.year}
                   </td>
                   {tool.values.map((v, i) => (
-                    <td key={i} className="text-center p-4">
+                    <td key={i} className="text-center p-3">
                       {v ? (
-                        <Check size={24} className="inline-block" style={{ color: "hsl(145 70% 50%)" }} />
+                        <Check size={22} className="inline-block" style={{ color: "hsl(145 70% 50%)" }} />
                       ) : (
-                        <X size={24} className="inline-block" style={{ color: "hsl(0 75% 55%)" }} />
+                        <X size={22} className="inline-block" style={{ color: "hsl(0 75% 55%)" }} />
                       )}
                     </td>
                   ))}
-                  <td className="text-center text-xs p-4 rounded-r-xl" style={{ color: isSecureDrop ? "hsl(170 85% 50% / 0.7)" : "hsl(215 15% 50%)" }}>
+                  <td className="text-center text-xs p-3 rounded-r-xl" style={{ color: isSecureDrop ? "hsl(170 85% 50% / 0.7)" : "hsl(215 15% 50%)" }}>
                     {tool.ref}
                   </td>
                 </motion.tr>
@@ -85,28 +85,47 @@ const LitReviewSlide = () => (
         </table>
       </div>
 
+      {/* Key research citations */}
+      <motion.div
+        className="grid grid-cols-2 gap-4 mt-5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7 }}
+      >
+        <div className="p-4 rounded-xl" style={{ background: "hsl(220 20% 12% / 0.8)", border: "1px solid hsl(200 80% 55% / 0.2)" }}>
+          <p className="text-sm font-bold mb-1" style={{ color: "hsl(200 80% 55%)" }}>Rahalkar & Virgaonkar (2024)</p>
+          <p className="text-xs" style={{ color: "hsl(215 15% 55%)" }}>
+            "Secure Device-to-Device File Transfer Protocol" — addresses encryption overhead & cloud storage limitations using WebRTC stack
+          </p>
+          <span className="text-xs italic" style={{ color: "hsl(215 15% 45%)" }}>arXiv:2411.13827</span>
+        </div>
+        <div className="p-4 rounded-xl" style={{ background: "hsl(220 20% 12% / 0.8)", border: "1px solid hsl(170 85% 50% / 0.2)" }}>
+          <p className="text-sm font-bold mb-1" style={{ color: "hsl(170 85% 50%)" }}>Dukiya et al. (2024)</p>
+          <p className="text-xs" style={{ color: "hsl(215 15% 55%)" }}>
+            "SecureLink P2P Using WebRTC" — equal peer participation model with integrated eavesdropping countermeasures
+          </p>
+          <span className="text-xs italic" style={{ color: "hsl(215 15% 45%)" }}>IJRAR, Vol. 11</span>
+        </div>
+      </motion.div>
+
       {/* Research gap */}
       <motion.div
-        className="p-5 rounded-xl mt-4"
+        className="p-4 rounded-xl mt-4"
         style={{
           background: "linear-gradient(135deg, hsl(170 85% 50% / 0.08), hsl(200 80% 55% / 0.08))",
           border: "1px solid hsl(170 85% 50% / 0.2)",
         }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
+        transition={{ delay: 0.9 }}
       >
-        <p className="text-base" style={{ color: "hsl(215 15% 60%)" }}>
-          <span className="font-bold" style={{ color: "hsl(170 85% 50%)" }}>Research Gap Identified: </span>
-          No existing solution simultaneously achieves zero-configuration setup, true cross-platform support, end-to-end encryption, 
-          and offline capability using open web standards. Secure-Drop addresses this gap through WebRTC data channels combined with 
-          the W3C Web Crypto API.
+        <p className="text-sm" style={{ color: "hsl(215 15% 60%)" }}>
+          <span className="font-bold" style={{ color: "hsl(170 85% 50%)" }}>Research Gap: </span>
+          Rahalkar (2024) identifies WebRTC encryption overhead as an open problem. Dukiya (2024) validates P2P WebRTC but lacks offline capability.
+          Salihu et al. (2019) detail WebRTC threat models but don't address cross-platform browser-only access. 
+          <span className="font-semibold" style={{ color: "hsl(170 85% 50%)" }}> Secure-Drop unifies all dimensions.</span>
         </p>
       </motion.div>
-
-      <p className="text-sm mt-3 italic" style={{ color: "hsl(215 15% 45%)" }}>
-        Ref: Schollmeier (2001), "A Definition of Peer-to-Peer Networking"; Oram (2001), "Peer-to-Peer: Harnessing the Power of Disruptive Technologies"
-      </p>
     </div>
   </SlideLayout>
 );
