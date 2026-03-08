@@ -39,7 +39,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { delay: i * 0.3, duration: 0.6, ease: "easeOut" },
+    transition: { delay: i * 0.3, duration: 0.6, ease: [0, 0, 0.2, 1] as const },
   }),
 };
 
