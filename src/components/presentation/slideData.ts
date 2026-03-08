@@ -54,7 +54,7 @@ export const slides: SlideData[] = [
   {
     component: ArchitectureSlide,
     title: "System Architecture",
-    speaker: "Aditya",
+    speaker: "Aaditya",
     notes: `"Our architecture follows a decentralized P2P topology as classified by Lua et al. (2005). The left diagram shows the traditional centralized model — all data routes through a cloud server, creating a single point of failure, data exposure, and internet dependency. Rahalkar (2024) specifically criticizes this model for imposing hard storage limits and unnecessary latency. The right diagram shows our mesh-style P2P approach where devices communicate directly. As detailed in RFC 8827 — the WebRTC Security Architecture specification — our system mandates DTLS for transport-layer security and SRTP for media encryption as baseline requirements. The key architectural innovation is separating the signaling plane from the data plane: mDNS (RFC 6762) handles discovery, WebSocket (RFC 6455) handles key exchange, and WebRTC DataChannels handle file transfer peer-to-peer."`,
   },
   {
