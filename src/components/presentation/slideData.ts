@@ -48,7 +48,7 @@ export const slides: SlideData[] = [
   {
     component: LitReviewSlide,
     title: "Literature Review",
-    speaker: "Aditya",
+    speaker: "Aaditya",
     notes: `"Thank you, Varun. Our literature review draws from five key sources. Rahalkar & Virgaonkar's 2024 arXiv paper on 'Secure Device-to-Device File Transfer Protocol' directly mirrors our objective — they address encryption overhead and cloud storage limitations using the WebRTC stack. Dukiya et al.'s 2024 IJRAR paper on 'SecureLink P2P Using WebRTC' validates our equal-peer participation model and discusses integrated eavesdropping countermeasures. Salihu et al. (2019) break down specific WebRTC threat models and justify the use of cryptographic libraries for confidentiality — directly supporting our AES-256 implementation. Werner's work at HAW Hamburg validates our choice of browser-native technologies without requiring desktop software installation. Finally, Stute et al.'s 2019 USENIX Security paper exposes critical vulnerabilities in Apple's AWDL protocol used by AirDrop — reinforcing why proprietary, closed protocols are inadequate. The research gap is clear: no existing solution simultaneously provides zero-config discovery, true cross-platform E2E encryption, and offline operation on open standards."`,
   },
   {
