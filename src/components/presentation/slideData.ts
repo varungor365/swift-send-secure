@@ -43,7 +43,7 @@ export const slides: SlideData[] = [
     component: ObjectivesSlide,
     title: "Research Objectives",
     speaker: "Varun",
-    notes: `"Our research objectives are formally defined as: Objective 1 — Zero internet dependency via mDNS-based peer discovery (RFC 6762). Objective 2 — AES-256-GCM authenticated encryption using the W3C Web Crypto API, satisfying NIST SP 800-38D requirements. Objective 3 — Universal cross-platform compatibility built on open web standards. These objectives directly address the research gaps identified by Salihu et al. (2019), who detail WebRTC threat models but note the lack of cross-platform browser-only secure transfer solutions. I will now hand over to Aditya."`,
+    notes: `"Our research objectives are formally defined as: Objective 1 — Zero internet dependency via mDNS-based peer discovery (RFC 6762). Objective 2 — AES-256-GCM authenticated encryption using the W3C Web Crypto API, satisfying NIST SP 800-38D requirements. Objective 3 — Universal cross-platform compatibility built on open web standards. These objectives directly address the research gaps identified by Salihu et al. (2019), who detail WebRTC threat models but note the lack of cross-platform browser-only secure transfer solutions. I will now hand over to Aaditya."`,
   },
   {
     component: LitReviewSlide,
