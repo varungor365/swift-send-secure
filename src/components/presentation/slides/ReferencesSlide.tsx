@@ -20,7 +20,7 @@ const refs = [
 const team = [
   { name: "Anushka Walia", roll: "1000017918" },
   { name: "Varun Ruhella", roll: "1000018804" },
-  { name: "Aditya Singh", roll: "1000018909" },
+  { name: "Aaditya Singh", roll: "1000018909" },
 ];
 
 const ReferencesSlide = () => (
