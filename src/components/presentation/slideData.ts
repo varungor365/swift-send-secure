@@ -25,7 +25,7 @@ export const slides: SlideData[] = [
     component: TitleSlide,
     title: "Title",
     speaker: "Varun",
-    notes: `"Good morning, Dr. Gupta and esteemed faculty. My name is Varun Ruhella, and I am joined by my teammates, Aditya Singh and Anushka Walia. Today, we are presenting our capstone project: Secure-Drop — a decentralized, offline, end-to-end encrypted peer-to-peer file transfer system. Our work is grounded in recent research by Rahalkar & Virgaonkar (2024) on secure device-to-device protocols, and Dukiya et al. (2024) on WebRTC-based decentralized file sharing, along with foundational IETF standards for WebRTC security."`,
+    notes: `"Good morning, Dr. Gupta and esteemed faculty. My name is Varun Ruhella, and I am joined by my teammates, Aaditya Singh and Anushka Walia. Today, we are presenting our capstone project: Secure-Drop — a decentralized, offline, end-to-end encrypted peer-to-peer file transfer system. Our work is grounded in recent research by Rahalkar & Virgaonkar (2024) on secure device-to-device protocols, and Dukiya et al. (2024) on WebRTC-based decentralized file sharing, along with foundational IETF standards for WebRTC security."`,
   },
   {
     component: IndexSlide,
