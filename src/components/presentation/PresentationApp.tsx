@@ -42,46 +42,13 @@ const PresentationApp: React.FC = () => {
   const exportToPPTX = useCallback(async () => {
     setExporting(true);
     try {
-      const { default: html2canvas } = await import("html2canvas");
-      const pptx = new pptxgen();
-      pptx.layout = "LAYOUT_WIDE"; // 13.33 x 7.5 inches (16:9)
-
-      const savedSlide = currentSlide;
-
-      for (let i = 0; i < slides.length; i++) {
-        setCurrentSlide(i);
-        await new Promise((r) => setTimeout(r, 400));
-
-        if (slideRef.current) {
-          const canvas = await html2canvas(slideRef.current, {
-            scale: 2,
-            backgroundColor: null,
-            useCORS: true,
-          });
-          const imgData = canvas.toDataURL("image/png");
-          const slide = pptx.addSlide();
-          slide.addImage({
-            data: imgData,
-            x: 0,
-            y: 0,
-            w: "100%",
-            h: "100%",
-          });
-          // Add entrance animation to each slide
-          slide.addText("", {
-            x: 0, y: 0, w: 0.01, h: 0.01,
-          });
-        }
-      }
-
-      setCurrentSlide(savedSlide);
-      await pptx.writeFile({ fileName: "Secure-Drop-Presentation.pptx" });
+      await exportNativePptx();
     } catch (err) {
       console.error("PPTX export failed:", err);
     } finally {
       setExporting(false);
     }
-  }, [currentSlide]);
+  }, []);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
