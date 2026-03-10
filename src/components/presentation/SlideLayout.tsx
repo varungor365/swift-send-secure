@@ -10,23 +10,30 @@ const SlideLayout: React.FC<SlideLayoutProps> = ({ children, className = "" }) =
     <div
       className={`w-full h-full relative overflow-hidden ${className}`}
       style={{
-        background: "#ffffff",
+        background: "linear-gradient(135deg, hsl(210 30% 96%), hsl(200 25% 93%), hsl(180 20% 95%))",
         color: "#1a1a2e",
       }}
     >
       {/* Subtle grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `linear-gradient(hsl(220 20% 80%) 1px, transparent 1px), linear-gradient(90deg, hsl(220 20% 80%) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(hsl(200 25% 75%) 1px, transparent 1px), linear-gradient(90deg, hsl(200 25% 75%) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
+        }}
+      />
+      {/* Soft warm overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.02]"
+        style={{
+          background: "radial-gradient(ellipse at top right, hsl(170 60% 70%), transparent 60%), radial-gradient(ellipse at bottom left, hsl(200 50% 75%), transparent 60%)",
         }}
       />
       {/* Top accent bar */}
       <div
         className="absolute top-0 left-0 right-0 h-2"
         style={{
-          background: "linear-gradient(90deg, hsl(170 85% 40%), hsl(200 80% 45%))",
+          background: "linear-gradient(90deg, hsl(170 75% 42%), hsl(195 70% 48%), hsl(210 65% 50%))",
         }}
       />
       {/* DIT University Logo */}

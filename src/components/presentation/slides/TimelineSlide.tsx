@@ -5,10 +5,10 @@ import { Calendar } from "lucide-react";
 const phases = [
   { phase: "Phase 1", activity: "Literature Survey & Requirement Analysis", schedule: "Aug – Sep 2024", status: "Completed", color: "hsl(145 70% 35%)" },
   { phase: "Phase 2", activity: "System Design & Architecture Planning", schedule: "Oct – Nov 2024", status: "Completed", color: "hsl(145 70% 35%)" },
-  { phase: "Phase 3", activity: "Core Module Development (mDNS, WebSocket, WebRTC)", schedule: "Dec 2024 – Jan 2025", status: "Completed", color: "hsl(145 70% 35%)" },
-  { phase: "Phase 4", activity: "AES-256-GCM Encryption Integration", schedule: "Feb 2025", status: "Completed", color: "hsl(145 70% 35%)" },
-  { phase: "Phase 5", activity: "Cross-Platform Testing & Benchmarking", schedule: "Mar 2025", status: "In Progress", color: "hsl(40 90% 45%)" },
-  { phase: "Phase 6", activity: "Documentation & Final Presentation", schedule: "Mar 2025", status: "In Progress", color: "hsl(40 90% 45%)" },
+  { phase: "Phase 3", activity: "Core Module Development (mDNS, WebSocket, WebRTC)", schedule: "Dec 2024 – Jan 2025", status: "In Progress", color: "hsl(40 90% 45%)" },
+  { phase: "Phase 4", activity: "AES-256-GCM Encryption Integration", schedule: "Feb 2025", status: "In Progress", color: "hsl(40 90% 45%)" },
+  { phase: "Phase 5", activity: "Cross-Platform Testing & Benchmarking", schedule: "Mar 2025", status: "Pending", color: "hsl(0 0% 55%)" },
+  { phase: "Phase 6", activity: "Documentation & Final Presentation", schedule: "Mar 2025", status: "Pending", color: "hsl(0 0% 55%)" },
 ];
 
 const statusBadge = (status: string, color: string) => (
