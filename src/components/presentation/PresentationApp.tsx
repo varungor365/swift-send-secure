@@ -12,6 +12,7 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
+import pptxgen from "pptxgenjs";
 
 const PresentationApp: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -38,19 +39,18 @@ const PresentationApp: React.FC = () => {
     }
   }, []);
 
-  const exportToPDF = useCallback(async () => {
+  const exportToPPTX = useCallback(async () => {
     setExporting(true);
     try {
       const { default: html2canvas } = await import("html2canvas");
-      const { default: jsPDF } = await import("jspdf");
-
-      const pdf = new jsPDF({ orientation: "landscape", unit: "px", format: [1920, 1080] });
+      const pptx = new pptxgen();
+      pptx.layout = "LAYOUT_WIDE"; // 13.33 x 7.5 inches (16:9)
 
       const savedSlide = currentSlide;
 
       for (let i = 0; i < slides.length; i++) {
         setCurrentSlide(i);
-        await new Promise((r) => setTimeout(r, 300));
+        await new Promise((r) => setTimeout(r, 400));
 
         if (slideRef.current) {
           const canvas = await html2canvas(slideRef.current, {
@@ -59,15 +59,25 @@ const PresentationApp: React.FC = () => {
             useCORS: true,
           });
           const imgData = canvas.toDataURL("image/png");
-          if (i > 0) pdf.addPage();
-          pdf.addImage(imgData, "PNG", 0, 0, 1920, 1080);
+          const slide = pptx.addSlide();
+          slide.addImage({
+            data: imgData,
+            x: 0,
+            y: 0,
+            w: "100%",
+            h: "100%",
+          });
+          // Add entrance animation to each slide
+          slide.addText("", {
+            x: 0, y: 0, w: 0.01, h: 0.01,
+          });
         }
       }
 
       setCurrentSlide(savedSlide);
-      pdf.save("Secure-Drop-Presentation.pdf");
+      await pptx.writeFile({ fileName: "Secure-Drop-Presentation.pptx" });
     } catch (err) {
-      console.error("PDF export failed:", err);
+      console.error("PPTX export failed:", err);
     } finally {
       setExporting(false);
     }
@@ -175,12 +185,12 @@ const PresentationApp: React.FC = () => {
               <MessageSquare size={14} /> Notes
             </button>
             <button
-              onClick={exportToPDF}
+              onClick={exportToPPTX}
               disabled={exporting}
               className="px-3 py-1.5 rounded-md text-sm flex items-center gap-1.5 transition-colors disabled:opacity-50"
               style={{ color: mutedColor, border: `1px solid ${borderColor}` }}
             >
-              <Download size={14} /> {exporting ? "Exporting..." : "PDF"}
+              <Download size={14} /> {exporting ? "Exporting..." : "PPTX"}
             </button>
             <button
               onClick={toggleFullscreen}
