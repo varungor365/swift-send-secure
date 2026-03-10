@@ -24,7 +24,7 @@ function addSlideBase(pptx: pptxgen, title?: string) {
     x: 0, y: 0, w: "100%", h: 0.12,
     fill: { type: "solid", color: TEAL },
   });
-  // Slide transition
+  // @ts-ignore - transition is supported by pptxgenjs at runtime
   slide.transition = { type: "fade", speed: 1.0 };
   return slide;
 }
