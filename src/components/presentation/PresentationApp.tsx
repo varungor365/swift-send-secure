@@ -12,7 +12,7 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
-import pptxgen from "pptxgenjs";
+import { exportNativePptx } from "./exportPptx";
 
 const PresentationApp: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
