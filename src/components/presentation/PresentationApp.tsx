@@ -185,12 +185,12 @@ const PresentationApp: React.FC = () => {
               <MessageSquare size={14} /> Notes
             </button>
             <button
-              onClick={exportToPDF}
+              onClick={exportToPPTX}
               disabled={exporting}
               className="px-3 py-1.5 rounded-md text-sm flex items-center gap-1.5 transition-colors disabled:opacity-50"
               style={{ color: mutedColor, border: `1px solid ${borderColor}` }}
             >
-              <Download size={14} /> {exporting ? "Exporting..." : "PDF"}
+              <Download size={14} /> {exporting ? "Exporting..." : "PPTX"}
             </button>
             <button
               onClick={toggleFullscreen}
